@@ -7,7 +7,7 @@ class ProductResponse(BaseModel):
     name: str
     price: int
     class Config:
-        orm_mode = True
+        from_attributes = True  # 修正: orm_mode → from_attributes
 
 class PurchaseItem(BaseModel):
     prd_id: int
