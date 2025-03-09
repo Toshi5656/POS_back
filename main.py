@@ -6,6 +6,9 @@ from schemas import ProductResponse, PurchaseRequest, PurchaseResponse
 import crud
 from fastapi.middleware.cors import CORSMiddleware
 
+import uvicorn
+import os
+
 # FastAPIアプリの作成
 app = FastAPI()
 
@@ -15,6 +18,7 @@ app.add_middleware(
     allow_origins=[
         "http://192.168.11.45:3000",  # フロントエンドのIPアドレス
         "http://localhost:3000"       # ローカルでのデバッグ用
+        "https://tech0-gen8-step4-pos-app-42.azurewebsites.net"  # AzureのWeb Appドメイン
     ],
     allow_credentials=True,
     allow_methods=["POST", "GET", "OPTIONS"],
@@ -47,3 +51,10 @@ def purchase(request: PurchaseRequest, db: Session = Depends(get_db)):
 
 # データベース初期化
 Base.metadata.create_all(bind=engine)
+
+
+
+
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", 8000))  # AzureのPORT環境変数に対応
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
