@@ -14,8 +14,9 @@ db_name = os.getenv("DB_NAME")
 path = os.getenv("SSL_PATH")
 
 
-DATABASE_URL = f"mysql+pymysql://{username}:{password}@{server_name}/{db_name}?ssl_ca={path}"
+# DATABASE_URL = f"mysql+pymysql://{username}:{password}@{server_name}/{db_name}?ssl_ca={path}"
 
+DATABASE_URL = f"mysql+pymysql://{username}:{password}@{server_name}/{db_name}?ssl_disabled=true"
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

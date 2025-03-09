@@ -5,6 +5,7 @@ __pycache__/
 *.pyd
 # 環境ファイル
 .env
+antenv/
 # 仮想環境
 venv/
 # その他
