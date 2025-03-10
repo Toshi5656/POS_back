@@ -17,7 +17,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://192.168.11.45:3000",  # フロントエンドのIPアドレス
-        "http://localhost:3000"       # ローカルでのデバッグ用
+        "http://localhost:3000",       # ローカルでのデバッグ用
         "https://tech0-gen8-step4-pos-app-42.azurewebsites.net"  # AzureのWeb Appドメイン
     ],
     allow_credentials=True,
